@@ -1,0 +1,15 @@
+@{ Layout = "_Layout"; }
+@using MtgApiManager.Lib.Service;
+@using MtgApiManager.Lib.Core;
+@using MtgApiManager.Lib.Model;
+
+
+<div class="grid-container">
+
+@foreach(string img in @Model)
+{
+    <img src="@img"/>
+
+}
+
+</div>

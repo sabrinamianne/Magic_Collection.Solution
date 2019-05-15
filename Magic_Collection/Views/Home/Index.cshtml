@@ -2,3 +2,14 @@
 @using MtgApiManager.Lib.Service;
 @using MtgApiManager.Lib.Core;
 @using MtgApiManager.Lib.Model;
+
+
+<h1>Magic Collection</h1>
+
+<form action="/cards/search" method="post">
+    <label for="name">Search by name:</label><br>
+    <input type="text" name="name" required/>
+</form>
+
+
+<h3><a href="/sets">Sets</a></h3>

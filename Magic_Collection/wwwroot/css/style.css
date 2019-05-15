@@ -1,1 +1,18 @@
+body {
+    background-color : rgb(102, 102, 102);
+}
+
+h1 {
+    text-align: center;
+}
+
+img:hover {
+    transform: scale(1.5);
+    transition: transform .2s;
+}
+
+img {
+    border-radius: 1.9ch;
+    
+}
 
