@@ -49,5 +49,7 @@ namespace Magic_Collection.Controllers
 
             return View(images);
         }
+
+        
     }   
 }
