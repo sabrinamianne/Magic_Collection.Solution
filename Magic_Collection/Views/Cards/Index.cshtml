@@ -6,11 +6,15 @@
 
 <h1>Magic Collection</h1>
 <h2>All cards</h2>
+
+
 <div class="grid-container">
-
-@foreach(string img in @Model)
-{
-    <img src="@img"/>
-}
-
+    <div></div>
+    <div>
+        @foreach(string img in @Model)
+        {
+            <img src="@img"/>
+        }
+    </div>
+    <div></div>
 </div>

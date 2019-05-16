@@ -6,8 +6,12 @@
 
 <h1>All Sets</h1>
 
-@foreach(string set in @Model)
-{
-    <a href="/sets/@set">@set</a><br>
+<div class="grid-container">
+    <div>
+        @foreach(string set in @Model)
+        {
+            <a href="/sets/@set">@set</a><br>
 
-}
+        }
+    </div>
+</div>

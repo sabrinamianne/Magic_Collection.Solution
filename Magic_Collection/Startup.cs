@@ -45,6 +45,6 @@ namespace Magic_Collection
 
     public static class DBConfiguration
     {
-        public static string ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=magic_2018-05-26";
+        public static string ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=magic";
     }
 }

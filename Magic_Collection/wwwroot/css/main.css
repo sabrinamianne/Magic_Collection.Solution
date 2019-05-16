@@ -31,4 +31,6 @@ a:hover {
 
 .grid-container {
     margin : 100px;
+    display: grid;
+    grid-template: auto / 1fr 5fr 1fr;
 }
