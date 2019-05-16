@@ -16,7 +16,28 @@ namespace Magic_Collection.Controllers
         [HttpGet("/cards")]
         public ActionResult Index()
         {
-            return View();
+            List<string> allCards = new List<string>{};
+            
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = @"SELECT image_url FROM cards ORDER BY name ASC;";
+
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while(rdr.Read())
+            {
+                if(!rdr.IsDBNull(0)) 
+                {
+                    string imageUrl = rdr.GetString(0);
+                    allCards.Add(imageUrl);
+                }
+            }
+
+            conn.Close();
+            if(conn!=null) conn.Dispose();
+
+            return View(allCards);
         }
 
         [HttpPost("/cards/search")]

@@ -6,10 +6,14 @@
 
 <h1>Magic Collection</h1>
 
-<form action="/cards/search" method="post">
-    <label for="name">Search by name:</label><br>
-    <input type="text" name="name" required/>
-</form>
+<div>
+    <form action="/cards/search" method="post">
+        <label for="name">Search by name:</label><br>
+        <input type="text" name="name" required autocomplete="off"/>
+    </form>
+</div>
 
-
-<a href="/sets">Sets</a>
+<div>
+    <a href="/cards">All cards</a>(warning: load times may crash your browser)<br>
+    <a href="/sets">Sets</a>
+</div>
