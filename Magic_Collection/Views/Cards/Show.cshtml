@@ -9,15 +9,15 @@
         <h1>Magic Collection</h1>
     </div>
     <div>
-        @if(@Model.Count == 0)
+        @if(@ViewBag.Results["images"].Count == 0)
         {
             <h2>Sorry, I have nothing to show you</h2>
         }
     </div>
     <div>
-        @if(@Model.Count > 0)
+        @if(@ViewBag.Results["images"].Count > 0)
         {
-            @foreach(string img in @Model)
+            @foreach(string img in @ViewBag.Results["images"])
             {
                 <img class="draggable card" src="@img"/> 
             }
@@ -25,5 +25,13 @@
     </div>
     <div>
         <img class="droppable" src="~/img/deck.png">
+    </div>
+    <div>
+        @for(int i = 0; i<@ViewBag.Results["totalPages"]; i++)
+        {
+            <form action="/cards/search" method="post">
+                <button type="submit"> </button>
+            </form>
+        }
     </div>
 </div>

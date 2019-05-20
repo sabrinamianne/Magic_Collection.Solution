@@ -42,11 +42,11 @@ namespace Magic_Collection.Controllers
         }
 
         [HttpPost("/cards/search")]
-        public ActionResult Show(string search, string column)
+        public ActionResult Show(string search, string column, int page = 0, int limit = 50)
         {
-            List<string> images = DB.Search(search, column);
+            ViewBag.Results = DB.Search(search, column, page, limit);
 
-            return View(images);
+            return View();
         }
 
 
