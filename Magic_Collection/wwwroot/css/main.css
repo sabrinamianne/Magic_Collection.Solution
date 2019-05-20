@@ -33,6 +33,6 @@ a:hover {
     margin : 100px;
 }
 
-.draggable {
-
+.draggable:hover {
+    z-index: 1;
 }
