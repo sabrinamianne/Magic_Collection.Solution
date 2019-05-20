@@ -6,12 +6,12 @@ h1 {
     text-align: center;
 }
 
-img:hover {
+img.card:hover {
     transform: scale(1.5);
     transition: transform .2s;
 }
 
-img {
+img.card {
     border-radius: 1.9ch;
     width: 226px;
     
@@ -35,4 +35,9 @@ a:hover {
 
 .draggable:hover {
     z-index: 1;
+}
+
+.drop-hover {
+    /* transform: scale(3); */
+
 }
