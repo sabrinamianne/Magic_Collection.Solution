@@ -56,12 +56,11 @@ namespace Magic_Collection.Controllers
             return View();
         }
 
-        [HttpGet]
-        public ActionResult Ajax()
-        {
-            Console.WriteLine("made it to the controller!");
-            return RedirectToAction("Index");
-        }
-       
+        // [HttpPost]
+        // public ActionResult Ajax(string input)
+        // {
+        //     Console.WriteLine("made it to the controller!");
+        //     return RedirectToAction("Index");
+        // }
     }   
 }

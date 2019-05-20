@@ -7,19 +7,8 @@ $().ready(function() {
         classes: {"ui-droppable-hover" : "drop-hover"}, tolerance: "touch",
         drop: function(){
             console.log("dropped on target");
-            $.ajax({
-                url: '/CardsController.cs/Ajax',
-                type: 'GET',
-                contentType: false,
-                // data: {test: "test"},
-                success: function(valid)
-                {
-                    if(valid) {
-                        console.log("Success");
-                    }else{
-                        console.log("Fail");
-                    }
-                }
-            })
-    }});
+            
+            //TODO how to make this pass info or even just call a route on a controller?
+        }
+    });
 });
