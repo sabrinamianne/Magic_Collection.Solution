@@ -40,12 +40,13 @@ namespace Magic_Collection.Controllers
         public ActionResult Show(string setName)
         {
             List<string> allCardImagesInSet = new List<string>{};
+            List<int> allIds = new List<int>{};
 
             MySqlConnection conn = DB.Connection();
             conn.Open();
 
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = @"SELECT image_url FROM cards WHERE setName = @setNameSearch ORDER BY name;";
+            cmd.CommandText = @"SELECT image_url, id FROM cards WHERE setName = @setNameSearch ORDER BY name;";
 
             MySqlParameter setNameSearch = new MySqlParameter("@setNameSearch", setName);
             cmd.Parameters.Add(setNameSearch);
@@ -56,13 +57,17 @@ namespace Magic_Collection.Controllers
                 if(!rdr.IsDBNull(0))
                 {
                     string image_url = rdr.GetString(0);
+                    int id = rdr.GetInt32(1);
                     allCardImagesInSet.Add(image_url);
+                    allIds.Add(id);
                 }
             }
 
             conn.Close();
             if(conn!=null) conn.Dispose();
 
+            ViewBag.AllIds = allIds;
+            
             return View(allCardImagesInSet);
         }
     }
