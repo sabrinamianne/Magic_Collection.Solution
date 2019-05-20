@@ -9,11 +9,19 @@
 
 <div class="grid-container">
     <div>
+      <h2>Search by
         <form action="/cards/search" method="post">
-            <label for="search">Search by name:</label><br>
-            <input type="text" name="search" required autocomplete="off"/>
-            <input hidden name="column" value="name">
-            <button type="submit">Search</button>
+          <input list="columns" name="column">
+          <datalist id="columns">
+            <option value="name">
+            <option value="color">
+            <option value="power">
+            <option value="toughness">
+            <option value="rarity">
+          </datalist></h2>
+          <label for="search"></label><br>
+          <input type="text" name="search" required autocomplete="off"/>
+            <input type="Submit"></button>
         </form>
     </div>
 
