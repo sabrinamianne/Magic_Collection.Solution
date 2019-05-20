@@ -38,6 +38,7 @@ a:hover {
 }
 
 .drop-hover {
-    /* transform: scale(3); */
+    transform: scale(1.2);
+    transition: transform .1s;
 
 }

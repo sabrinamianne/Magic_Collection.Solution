@@ -49,6 +49,19 @@ namespace Magic_Collection.Controllers
             return View(images);
         }
 
+        [HttpGet("/cards/search")]
+        public ActionResult Show(string test)
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Ajax()
+        {
+            Console.WriteLine("made it to the controller!");
+            return RedirectToAction("Index");
+        }
+
         
     }   
 }
