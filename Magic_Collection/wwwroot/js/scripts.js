@@ -1,7 +1,7 @@
 $().ready(function() {
     
 
-    $(".draggable").draggable();
+    $(".draggable").draggable({revert: true});
 
 
     // console.log("loaded");
