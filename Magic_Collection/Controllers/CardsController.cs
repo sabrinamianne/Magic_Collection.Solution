@@ -16,57 +16,35 @@ namespace Magic_Collection.Controllers
         [HttpGet("/cards")]
         public ActionResult Index()
         {
-            List<string> allCards = new List<string>{};
+            // List<string> allCards = new List<string>{};
             
-            MySqlConnection conn = DB.Connection();
-            conn.Open();
+            // MySqlConnection conn = DB.Connection();
+            // conn.Open();
             
-            MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = @"SELECT image_url FROM cards ORDER BY name ASC;";
+            // MySqlCommand cmd = conn.CreateCommand();
+            // cmd.CommandText = @"SELECT image_url FROM cards ORDER BY name ASC;";
 
-            MySqlDataReader rdr = cmd.ExecuteReader();
-            while(rdr.Read())
-            {
-                if(!rdr.IsDBNull(0)) 
-                {
-                    string imageUrl = rdr.GetString(0);
-                    allCards.Add(imageUrl);
-                }
-            }
+            // MySqlDataReader rdr = cmd.ExecuteReader();
+            // while(rdr.Read())
+            // {
+            //     if(!rdr.IsDBNull(0)) 
+            //     {
+            //         string imageUrl = rdr.GetString(0);
+            //         allCards.Add(imageUrl);
+            //     }
+            // }
 
-            conn.Close();
-            if(conn!=null) conn.Dispose();
+            // conn.Close();
+            // if(conn!=null) conn.Dispose();
 
-            return View(allCards);
+            // return View(allCards);
+            return View();
         }
 
         [HttpPost("/cards/search")]
-        public ActionResult Show(string name)
+        public ActionResult Show(string search, string column)
         {
-            List<string> images = new List<string>{};
-            
-            MySqlConnection conn = DB.Connection();
-            conn.Open();
-            
-            MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = @"SELECT image_url FROM cards WHERE name LIKE '%"+name+"%' ORDER BY name ASC;";
-
-            MySqlParameter searchName = new MySqlParameter("@searchName", name);
-            cmd.Parameters.Add(searchName);
-
-            MySqlDataReader rdr = cmd.ExecuteReader();
-            
-            while(rdr.Read())
-            {
-                if(!rdr.IsDBNull(0)) 
-                {
-                    string imageUrl = rdr.GetString(0);
-                    images.Add(imageUrl);
-                }
-            }
-
-            conn.Close();
-            if(conn!=null) conn.Dispose();
+            List<string> images = DB.Search(search, column);
 
             return View(images);
         }
