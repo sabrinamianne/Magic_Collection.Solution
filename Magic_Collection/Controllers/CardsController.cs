@@ -16,29 +16,29 @@ namespace Magic_Collection.Controllers
         [HttpGet("/cards")]
         public ActionResult Index()
         {
-            // List<string> allCards = new List<string>{};
-            
-            // MySqlConnection conn = DB.Connection();
-            // conn.Open();
-            
-            // MySqlCommand cmd = conn.CreateCommand();
-            // cmd.CommandText = @"SELECT image_url FROM cards ORDER BY name ASC;";
+            List<string> allCards = new List<string>{};
 
-            // MySqlDataReader rdr = cmd.ExecuteReader();
-            // while(rdr.Read())
-            // {
-            //     if(!rdr.IsDBNull(0)) 
-            //     {
-            //         string imageUrl = rdr.GetString(0);
-            //         allCards.Add(imageUrl);
-            //     }
-            // }
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
 
-            // conn.Close();
-            // if(conn!=null) conn.Dispose();
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = @"SELECT image_url FROM cards ORDER BY name ASC;";
 
-            // return View(allCards);
-            return View();
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while(rdr.Read())
+            {
+                if(!rdr.IsDBNull(0))
+                {
+                    string imageUrl = rdr.GetString(0);
+                    allCards.Add(imageUrl);
+                }
+            }
+
+            conn.Close();
+            if(conn!=null) conn.Dispose();
+
+            return View(allCards);
+
         }
 
         [HttpPost("/cards/search")]
@@ -49,6 +49,6 @@ namespace Magic_Collection.Controllers
             return View(images);
         }
 
-        
-    }   
+
+    }
 }
