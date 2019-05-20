@@ -14,6 +14,7 @@ img:hover {
 img {
     border-radius: 1.9ch;
     width: 226px;
+    
 }
 
 a {
@@ -28,9 +29,10 @@ a:hover {
     color: rgb(255, 145, 0);
 }
 
-
 .grid-container {
     margin : 100px;
-    display: grid;
-    grid-template: auto / 1fr 5fr 1fr;
+}
+
+.draggable {
+    position: absolute;
 }

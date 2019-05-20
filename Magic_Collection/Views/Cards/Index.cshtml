@@ -13,7 +13,9 @@
     <div>
         @foreach(string img in @Model)
         {
-            <img src="@img"/>
+            <div class="draggable">
+                <img src="@img"/>
+            </div>
         }
     </div>
     <div></div>
