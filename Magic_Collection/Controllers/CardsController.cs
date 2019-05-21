@@ -58,6 +58,7 @@ namespace Magic_Collection.Controllers
             ViewBag.Results = DB.Search(search, column, page, limit);
             ViewBag.Search = search;
             ViewBag.Column = column;
+            ViewBag.Page = page;
             return View();
         }
     }   

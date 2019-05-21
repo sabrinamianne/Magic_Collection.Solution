@@ -25,7 +25,7 @@ namespace Magic_Collection.Models
             //Dont need this every search?
             cmd.CommandText = @"SELECT COUNT(*) FROM cards WHERE "+column+" LIKE '%"+search+"%';";
             int totalResults = int.Parse(cmd.ExecuteScalar().ToString());
-            int totalPages = totalResults / 50/*resultsPerPage */;
+            int totalPages = totalResults / limit;
 
             int start = (page-1) * limit;
             int end = start + limit;
@@ -34,7 +34,7 @@ namespace Magic_Collection.Models
             // Console.WriteLine("totalResults: " + totalResults);
             // Console.WriteLine("totalPages: " + totalPages);
 
-            cmd.CommandText = @"SELECT image_url FROM cards WHERE "+column+" LIKE '%"+search+"%' ORDER BY name ASC LIMIT "+start+", "+end+";";
+            cmd.CommandText = @"SELECT image_url FROM cards WHERE "+column+" LIKE '%"+search+"%' ORDER BY name ASC LIMIT "+start+", "+limit+";";
             MySqlDataReader rdr = cmd.ExecuteReader();
             while(rdr.Read())
             {
