@@ -15,6 +15,36 @@
 </head>
 <header>
   <div class="container">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-footer">
+        <a class="navbar-brand" href="/">Home</a>
+      </div>
+      <div class="navbar-footer">
+        <form action="/cards/search" method="post">
+          <select class="form-control search-slt" name="column" id="selection" required>
+            <option disabled selected value>Select</option>
+            <option value="name">Name</option>
+            <option value="colors">Color</option>
+            <option value="type">Type</option>
+            <option value="text">Text</option>
+            <option value="flavor">Flavor</option>
+          </select>
+      </div>
+      <div class="navbar-footer">
+          <input type="text" id="search" class="form-control search-slt" name="search" style="display:block" style="background-color: grey;" style="color: white;"  placeholder="Search..."autocomplete="off"/>
+      </div>
+      <div class="navbar-footer">
+        <button type="submit" class="button2"> <span class="glyphicon glyphicon-search"></span></button>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+      </div>
+    </nav>
     <div class="jumbotron">
       <video autoplay="autoplay" muted="muted" loop style="width: 100%; height: 800px;">
         <source src="../video/videoGirl.mp4" type="video/mp4">
@@ -60,7 +90,7 @@
                 </select>
               </div>
               <div class="col-lg-4 col-md-4 col-sm-12 p-0">
-                <input type="text" class="form-control search-slt" name="search" size="20px" placeholder="Search..."required autocomplete="off"/>
+                <input type="text" class="form-control search-slt" name="search" size="20px" placeholder="Search..."autocomplete="off"/>
               </div>
               <div class="col-lg-3 col-md-4 col-sm-12 p-0">
                 <button type="submit" class="btn btn danger wrn-btn">Search</button>
@@ -76,19 +106,13 @@
   <nav class="navbar navbar-inverse navbar-fixed-bottom">
     <div class="container-fluid">
       <div class="navbar-footer">
-        <a class="navbar-brand" href="/">Home</a>
-      </div>
-      <div class="navbar-footer">
         <a class="navbar-brand" href="/cards">All Cards</a>
       </div>
       <div class="navbar-footer">
         <a class="navbar-brand" href="/sets">All Sets</a>
       </div>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> Contact</a></li>
       </ul>
       </div>
     </nav>
