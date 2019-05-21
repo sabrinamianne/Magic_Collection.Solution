@@ -4,7 +4,8 @@ body {
     font-family: fantasy;
 }
 video {
-    padding:0;
+    padding:20;
+    margin-top: 4%;
     position: absolute;
     top: 0;
     left: 1px;
@@ -12,9 +13,9 @@ video {
 }
 
 .jumbotron {
-  background-color: #8c4e00;
+  background-color: black;
   background-size: cover;
-  height: 5px;
+  height: 1px;
 }
 
 
@@ -60,17 +61,38 @@ video {
     }
 }
 
-
-#demon {
-  padding-top: 85%;
-  position: relative;
-
+.button2 {
+  background-color:#d0d3d8;
+  color: black;
+  width: 50px;
+  height: 32px;
+  position: absolute;
 
 }
 
+#search {
+  background-color: #d0d3d8;
+  
+  width: 80px;
+  display: inline;
+  position: absolute;
+}
+
+#selection {
+  position: absolute;
+
+  background-color: #d0d3d8;
+  width: 100px;
+}
+
+#demon {
+  padding-top: 87%;
+  position: relative;
+}
+
 #title {
-  padding-top: 25%;
-  width: 90%;
+  padding-top: 22%;
+  width: 87%;
   padding-left: 10%;
   position: relative;
   z-index: 1;
