@@ -21,7 +21,7 @@ namespace Magic_Collection.Models
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = @"SELECT COUNT(*) FROM cards WHERE "+column+" LIKE '%"+search+"%' LIMIT "+limit+";";
+            cmd.CommandText = @"SELECT COUNT(*) FROM cards WHERE "+column+" LIKE '%"+search+"%';";
             int totalResults = int.Parse(cmd.ExecuteScalar().ToString());
             int totalPages = totalResults / 50/*resultsPerPage */;
                         
@@ -29,7 +29,7 @@ namespace Magic_Collection.Models
             // Console.WriteLine("totalResults: " + totalResults);
             // Console.WriteLine("totalPages: " + totalPages);
 
-            cmd.CommandText = @"SELECT image_url FROM cards WHERE "+column+" LIKE '%"+search+"%';";
+            cmd.CommandText = @"SELECT image_url FROM cards WHERE "+column+" LIKE '%"+search+"%' ORDER BY name ASC;";
             MySqlDataReader rdr = cmd.ExecuteReader();
             while(rdr.Read())
             {
@@ -51,5 +51,7 @@ namespace Magic_Collection.Models
 
             return results;
         }
+
+
     }
 }
