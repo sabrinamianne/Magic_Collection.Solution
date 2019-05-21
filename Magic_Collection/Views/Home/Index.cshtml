@@ -5,16 +5,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="~/css/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script type="text/javascript" src="~/js/jquery-3.4.1.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    @* <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> *@
     <script type="text/javascript" src="~/js/scripts.js"></script>
+    <link rel="stylesheet" href="~/css/styles.css">
     <title>Magic Collection</title>
     <link rel="shortcut icon" href="~/img/fire.ico" type="image/x-icon">
 </head>
@@ -62,13 +61,12 @@
                   <option value="type">Type</option>
                   <option value="text">Text</option>
                   <option value="flavor">Flavor</option>
-                </select><h2>
+                </select>
               </div>
               <div class="col-lg-4 col-md-4 col-sm-12 p-0">
-                ><label for="search"></label><br>
                 <input type="text" class="form-control search-slt" name="search" size="20px" placeholder="Search..."required autocomplete="off"/>
               </div>
-              <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+              <div class="col-lg-3 col-md-4 col-sm-12 p-0">
                 <button type="submit" class="btn btn danger wrn-btn">Search</button>
               </div>
             </div>
@@ -77,13 +75,27 @@
     </form>
   </div>
 </section>
-  <div class="container" id="links">
-    <div class="row">
-      <div class="row-md-12">
-        <h2><a href="/cards">All cards</a></h2>(warning: load times may crash your browser)<br>
-        <h2><a href="/sets">Sets</a></h2>
-      </div>
-    </div>
-  </div>
 </body>
+<footer>
+  <nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+      <div class="navbar-footer">
+        <a class="navbar-brand" href="/">Home</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/cards">All Cards</a></li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="/sets">Sets<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/sets">All Sets</a></li>
+            <li><a href="#">Page 1-2</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+      </div>
+    </nav>
+</footer>
 </html>

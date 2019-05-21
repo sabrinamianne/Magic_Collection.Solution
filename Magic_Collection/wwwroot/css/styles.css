@@ -62,15 +62,19 @@ video {
 
 
 #demon {
-  padding-top: 90%;
+  padding-top: 80%;
   position: relative;
 
 }
 
 #title {
-  padding-top: 35%;
-  height: 1100px;
+  padding-top: 20%;
   width: 90%;
-  padding-left: 15%;
-  position: static;
+  padding-left: 10%;
+  position: relative;
+  z-index: 1;
+}
+
+.search-sec {
+  margin-bottom: 20%;
 }
