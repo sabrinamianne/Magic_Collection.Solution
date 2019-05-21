@@ -16,5 +16,8 @@ $().ready(function() {
 
     $("#pageInput").change(function(){
         $("#pageForm").attr("action", "/cards/search/"+$("#pageInput").val())
+        $("#pageForm").submit();
     });
+
+    
 });
