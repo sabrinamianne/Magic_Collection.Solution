@@ -1,0 +1,80 @@
+body {
+    background-color : black;
+    color: #e8912e;
+    font-family: fantasy;
+}
+video {
+    padding:0;
+    position: absolute;
+    top: 0;
+    left: 1px;
+
+}
+
+.jumbotron {
+  background-color: #8c4e00;
+  background-size: cover;
+  height: 50px;
+}
+
+
+#links {
+  padding-top: 80px;
+}
+
+#title {
+  padding-top: 10px;
+}
+
+.search-sec{
+    padding: 2rem;
+}
+.search-slt{
+    display: block;
+    width: 100%;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #55595c;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    height: calc(3rem + 2px) !important;
+    border-radius:0;
+}
+.wrn-btn{
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: capitalize;
+    height: calc(3rem + 2px) !important;
+    border-radius:0;
+    color: violet;
+}
+@media (min-width: 992px){
+    .search-sec{
+        position: relative;
+        top: -114px;
+        background: rgba(26, 70, 104, 0.51);
+    }
+}
+
+@media (max-width: 992px){
+    .search-sec{
+        background: #1A4668;
+    }
+}
+#title {
+height: 200px;
+position: relative;
+background-color: rgba(33,33,33,0.7);
+left: 300px;
+margin-top: 130px;
+}
+
+
+
+img {
+  padding-top: 700px;
+  position: relative;
+  z-index: 2;
+}

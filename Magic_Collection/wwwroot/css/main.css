@@ -1,9 +1,12 @@
 body {
-    background-color : rgb(102, 102, 102);
+    background-color : black;
+    color: #e8912e;
+    font-family: fantasy;
 }
 
 h1 {
     text-align: center;
+    font-family: fantasy;
 }
 
 img.card:hover {
@@ -14,7 +17,7 @@ img.card:hover {
 img.card {
     border-radius: 1.9ch;
     width: 226px;
-    
+
 }
 
 a {
