@@ -62,13 +62,14 @@ video {
 
 
 #demon {
-  padding-top: 80%;
+  padding-top: 85%;
   position: relative;
+
 
 }
 
 #title {
-  padding-top: 20%;
+  padding-top: 25%;
   width: 90%;
   padding-left: 10%;
   position: relative;
@@ -77,4 +78,11 @@ video {
 
 .search-sec {
   margin-bottom: 20%;
+}
+
+.navbar2 {
+  box-sizing:border-box;
+  display: block;
+  font-size: 14px;
+
 }
