@@ -30,7 +30,7 @@
     {
         <div>
             <form action="/cards/1" method="post" id="pageForm">
-                <label for="page">Select Page</label>
+                <label for="page">Select Page</label><br>
                 <select name="page" id="pageInput" aria-placeholder="@ViewBag.Page">
 
                     @for(int i = 1; i < @ViewBag.Results["totalPages"]; i++)
