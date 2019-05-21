@@ -25,10 +25,8 @@
         <source src="../video/videoGirl.mp4" type="video/mp4">
           <img src="../img/witch.jpg" alt>
       </video>
-    </div>
-  </div>
-  <div class="carousel-item active">
       <img src="~/img/title.png" id="title" alt="title">
+    </div>
   </div>
 </header>
 <body>
@@ -45,7 +43,7 @@
   <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
       <div class="carousel-inner">
           <div class="carousel-item active">
-              <img src="~/img/demon.jpeg" class="d-block w-100" alt="demon">
+              <img src="~/img/demon.jpeg" id="demon" class="d-block w-100" alt="demon">
           </div>
       </div>
   </div>
@@ -57,14 +55,14 @@
         <div class="col-lg-12">
           <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 p-0">
-              <input class="form-control search-slt" type="text" id="column" list="columns" name="column" placeholder="Select" autocomplete="off">
-                <datalist id="columns">
-                  <option value="name">
-                  <option value="colors">
-                  <option value="type">
-                  <option value="text">
-                  <option value="flavor">
-                </datalist><h2>
+              <select class="form-control search-slt" id="column" name="column">
+                  <option value="selection">Select</option>
+                  <option value="name">Name</option>
+                  <option value="colors">Color</option>
+                  <option value="type">Type</option>
+                  <option value="text">Text</option>
+                  <option value="flavor">Flavor</option>
+                </select><h2>
               </div>
               <div class="col-lg-4 col-md-4 col-sm-12 p-0">
                 ><label for="search"></label><br>
