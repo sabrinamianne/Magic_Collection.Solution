@@ -11,4 +11,10 @@ $().ready(function() {
             //TODO how to make this pass info or even just call a route on a controller?
         }
     });
+
+
+
+    $("#pageInput").change(function(){
+        $("#pageForm").attr("action", "/cards/"+$("#pageInput").val())
+    });
 });

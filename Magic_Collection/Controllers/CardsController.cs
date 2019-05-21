@@ -42,25 +42,23 @@ namespace Magic_Collection.Controllers
         }
 
         [HttpPost("/cards/search")]
-        public ActionResult Show(string search, string column, int page = 0, int limit = 50)
+        public ActionResult Show(string search, string column, int limit = 50)
         {
+            ViewBag.Results = DB.Search(search, column, 1, limit);
+            ViewBag.Search = search;
+            ViewBag.Column = column;
+            return View();
+        }
+
+
+        [HttpPost("/cards/{page}")]
+        public ActionResult Show(string search, string column, int page = 1, int limit = 50)
+        {
+
             ViewBag.Results = DB.Search(search, column, page, limit);
-
+            ViewBag.Search = search;
+            ViewBag.Column = column;
             return View();
         }
-
-
-        [HttpGet("/cards/search")]
-        public ActionResult Show(string test)
-        {
-            return View();
-        }
-
-        // [HttpPost]
-        // public ActionResult Ajax(string input)
-        // {
-        //     Console.WriteLine("made it to the controller!");
-        //     return RedirectToAction("Index");
-        // }
     }   
 }

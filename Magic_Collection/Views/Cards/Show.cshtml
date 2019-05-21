@@ -27,11 +27,11 @@
         <img class="droppable" src="~/img/deck.png">
     </div>
     <div>
-        @for(int i = 0; i<@ViewBag.Results["totalPages"]; i++)
-        {
-            <form action="/cards/search" method="post">
-                <button type="submit"> </button>
-            </form>
-        }
+        <form action="/cards/1" method="post" id="pageForm">
+            <input type="number" min="1" max='@ViewBag.Results["totalPages"]' name="page" id="pageInput">
+            <input hidden name="search" value='@ViewBag.Search'>
+            <input hidden name="column" value='@ViewBag.Column'>
+            <button type="submit">Go</button>
+        </form>
     </div>
 </div>
