@@ -42,11 +42,11 @@ namespace Magic_Collection.Controllers
         }
 
         [HttpPost("/cards/search")]
-        public ActionResult Show(string search, string column)
+        public ActionResult Show(string search, string column, int page = 0, int limit = 50)
         {
-            List<string> images = DB.Search(search, column);
+            ViewBag.Results = DB.Search(search, column, page, limit);
 
-            return View(images);
+            return View();
         }
 
 
@@ -56,12 +56,11 @@ namespace Magic_Collection.Controllers
             return View();
         }
 
-        [HttpGet]
-        public ActionResult Ajax()
-        {
-            Console.WriteLine("made it to the controller!");
-            return RedirectToAction("Index");
-        }
-       
+        // [HttpPost]
+        // public ActionResult Ajax(string input)
+        // {
+        //     Console.WriteLine("made it to the controller!");
+        //     return RedirectToAction("Index");
+        // }
     }   
 }

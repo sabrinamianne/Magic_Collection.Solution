@@ -13,21 +13,24 @@ namespace Magic_Collection.Models
             return conn;
         }
 
-        public static List<string> Search(string search, string column)
+        public static Dictionary<string, object>Search(string search, string column, int page = 0, int limit = 50)
         {
             List<string> images = new List<string>{};
 
             MySqlConnection conn = DB.Connection();
             conn.Open();
-
             MySqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"SELECT COUNT(*) FROM cards WHERE "+column+" LIKE '%"+search+"%';";
+            int totalResults = int.Parse(cmd.ExecuteScalar().ToString());
+            int totalPages = totalResults / 50/*resultsPerPage */;
+                        
+            //DEBUG
+            // Console.WriteLine("totalResults: " + totalResults);
+            // Console.WriteLine("totalPages: " + totalPages);
+
             cmd.CommandText = @"SELECT image_url FROM cards WHERE "+column+" LIKE '%"+search+"%' ORDER BY name ASC;";
-
-            MySqlParameter searchName = new MySqlParameter("@searchName", search);
-            cmd.Parameters.Add(searchName);
-
             MySqlDataReader rdr = cmd.ExecuteReader();
-
             while(rdr.Read())
             {
                 if(!rdr.IsDBNull(0))
@@ -40,7 +43,13 @@ namespace Magic_Collection.Models
             conn.Close();
             if(conn!=null) conn.Dispose();
 
-            return images;
+            Dictionary<string, object> results = new Dictionary<string, object>{
+                {"images", images},
+                {"totalFound", totalResults},
+                {"totalPages", totalPages}
+            };
+
+            return results;
         }
 
 
