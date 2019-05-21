@@ -21,9 +21,8 @@ namespace Magic_Collection.Models
             conn.Open();
 
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = @"SELECT image_url FROM cards WHERE "+column+" LIKE '%"+search+"%';";
+            cmd.CommandText = @"SELECT image_url FROM cards WHERE "+column+" LIKE '%"+search+"%' ORDER BY name ASC;";
 
-            Console.WriteLine(cmd.CommandText);
             MySqlParameter searchName = new MySqlParameter("@searchName", search);
             cmd.Parameters.Add(searchName);
 
@@ -43,5 +42,7 @@ namespace Magic_Collection.Models
 
             return images;
         }
+
+
     }
 }
