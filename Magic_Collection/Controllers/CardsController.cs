@@ -16,28 +16,32 @@ namespace Magic_Collection.Controllers
         [HttpGet("/cards")]
         public ActionResult Index()
         {
-            List<string> allCards = new List<string>{};
+            // List<string> allCards = new List<string>{};
 
-            MySqlConnection conn = DB.Connection();
-            conn.Open();
+            // MySqlConnection conn = DB.Connection();
+            // conn.Open();
 
-            MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = @"SELECT image_url FROM cards ORDER BY name ASC;";
+            // MySqlCommand cmd = conn.CreateCommand();
+            // cmd.CommandText = @"SELECT image_url FROM cards ORDER BY name ASC;";
 
-            MySqlDataReader rdr = cmd.ExecuteReader();
-            while(rdr.Read())
-            {
-                if(!rdr.IsDBNull(0))
-                {
-                    string imageUrl = rdr.GetString(0);
-                    allCards.Add(imageUrl);
-                }
-            }
+            // MySqlDataReader rdr = cmd.ExecuteReader();
+            // while(rdr.Read())
+            // {
+            //     if(!rdr.IsDBNull(0))
+            //     {
+            //         string imageUrl = rdr.GetString(0);
+            //         allCards.Add(imageUrl);
+            //     }
+            // }
 
-            conn.Close();
-            if(conn!=null) conn.Dispose();
+            // conn.Close();
+            // if(conn!=null) conn.Dispose();
 
-            return View(allCards);
+            ViewBag.Results = DB.AllCards();
+            ViewBag.Search = " ";
+            ViewBag.Column = "*";
+
+            return View();
 
         }
 
@@ -51,7 +55,7 @@ namespace Magic_Collection.Controllers
         }
 
 
-        [HttpPost("/cards/{page}")]
+        [HttpPost("/cards/search/{page}")]
         public ActionResult Show(string search, string column, int page = 1, int limit = 50)
         {
 
