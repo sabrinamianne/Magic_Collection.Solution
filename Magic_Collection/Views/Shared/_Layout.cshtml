@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="~/css/styles.css">
     <link rel="stylesheet" href="~/css/main.css">
-
     <script type="text/javascript" src="~/js/jquery-3.4.1.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="~/js/scripts.js"></script>
@@ -20,6 +19,22 @@
       <div class="container-fluid">
         <div class="navbar-footer">
           <a class="navbar-brand" href="/">Home</a>
+          <div class="nav navbar-nav navbar-right">
+            <form action="/cards/search" method="post">
+            <input  type="search" aria-label="Search" id="searchbar" placeholder="Search" name="search">
+            <button class="btn" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
+          </div>
+          <div class="nav navbar-nav navbar-right">
+            <select class="form-control search-slt" id="columnlay" name="column" required>
+                <option selected disabled value>Select</option>
+                <option value="name">Name</option>
+                <option value="colors">Color</option>
+                <option value="type">Type</option>
+                <option value="text">Text</option>
+                <option value="flavor">Flavor</option>
+              </select>
+          </div>
+          </form>
         </div>
       </div>
     </nav>
