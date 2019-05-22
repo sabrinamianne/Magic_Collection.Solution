@@ -89,5 +89,44 @@ namespace Magic_Collection.Models
 
             return results;
         }
+
+
+        public static void AddToCollection(string url)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"INSERT INTO collection (image_url) VALUES (@cardUrl);";
+            MySqlParameter cardUrl = new MySqlParameter("@cardUrl", url);
+            cmd.Parameters.Add(cardUrl);
+
+            cmd.ExecuteNonQuery();
+        }
+
+
+        public static List<string> GetAllCollectionCards()
+        {
+            List<string> collectionUrls = new List<string>{};
+
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"SELECT image_url FROM collection";
+            
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while(rdr.Read())
+            {
+                string url = rdr.GetString(0);
+                collectionUrls.Add(url);
+            }
+            
+            conn.Close();
+            if(conn!=null) conn.Dispose();
+
+
+            return collectionUrls;
+        }
     }
 }

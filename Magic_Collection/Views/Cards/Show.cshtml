@@ -20,11 +20,16 @@
             @foreach(string img in @ViewBag.Results["images"])
             {
                 <img class="draggable card" src="@img"/> 
+                
             }
         }
     </div>
     <div>
-        <img class="droppable" src="~/img/deck.png">
+
+        <form action="/cards/collection/add" method="post" id="collectionForm">
+            <img class="droppable" src="~/img/deck.png">
+            <input hidden id="collectionValue" name="url" value="">
+        </form>
     </div>
     @if(@ViewBag.Results["totalPages"] > 1)
     {
