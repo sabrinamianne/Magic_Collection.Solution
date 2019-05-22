@@ -1,0 +1,35 @@
+@{ Layout = "_Layout"; }
+@using MtgApiManager.Lib.Service;
+@using MtgApiManager.Lib.Core;
+@using MtgApiManager.Lib.Model;
+
+<div class="grid-container">
+
+
+    <div>
+        <h1>Your Collection</h1>
+    </div>
+    <div>
+        @if(@ViewBag.Collection.Count == 0)
+        {
+            <h2>Sorry, I have nothing to show you</h2>
+        }
+    </div>
+    <div>
+        @if(@ViewBag.Collection.Count > 0)
+        {
+            @foreach(string img in @ViewBag.Collection)
+            {
+                <img class="draggable card" src="@img"/> 
+                
+            }
+        }
+    </div>
+    <div>
+        <form action="/cards/collection/delete" method="post" id="collectionDeleteForm">
+            <img class="delete droppable" src="~/img/trash.png">
+            <input hidden id="collectionDeleteValue" name="url" value="">
+        </form>
+    </div>
+
+</div>

@@ -1,14 +1,28 @@
 $().ready(function() {
     
 
-    $(".draggable").draggable({revert: true});
+    $(".draggable").draggable({
+        start: function(){
+            $(" #collectionValue").attr("value", $(this).attr("src"));
+            $("#collectionDeleteValue").attr("value", $(this).attr("src"));
+        },
+        revert: true
+    });
+
 
     $(".droppable").droppable({
         classes: {"ui-droppable-hover" : "drop-hover"}, tolerance: "touch",
         drop: function(){
             console.log("dropped on target");
-            
-            //TODO how to make this pass info or even just call a route on a controller?
+            $("#collectionForm").submit();           
+        }
+    });
+
+    $(".delete").droppable({
+        classes: {"ui-droppable-hover" : "drop-hover"}, tolerance: "touch",
+        drop: function(){
+            console.log("dropped on target: deleting from collection");
+            $("#collectionDeleteForm").submit();
         }
     });
 
@@ -25,4 +39,7 @@ $().ready(function() {
         $("#allPageForm").submit();
     });    
     
+
+    
+
 });

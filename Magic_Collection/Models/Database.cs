@@ -89,5 +89,112 @@ namespace Magic_Collection.Models
 
             return results;
         }
+
+
+        public static void AddToCollection(string url)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"INSERT INTO collection (image_url) VALUES (@cardUrl);";
+            MySqlParameter cardUrl = new MySqlParameter("@cardUrl", url);
+            cmd.Parameters.Add(cardUrl);
+
+            cmd.ExecuteNonQuery();
+        }
+
+        public static void DeleteFromCollection(string url)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"DELETE FROM collection WHERE image_url = @cardUrl LIMIT 1;";
+            MySqlParameter cardUrl = new MySqlParameter("@cardUrl", url);
+            cmd.Parameters.Add(cardUrl);
+
+            cmd.ExecuteNonQuery();
+        }
+
+        public static List<string> GetAllCollectionCards()
+        {
+            List<string> collectionUrls = new List<string>{};
+
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"SELECT image_url FROM collection";
+            
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while(rdr.Read())
+            {
+                string url = rdr.GetString(0);
+                collectionUrls.Add(url);
+            }
+            
+            conn.Close();
+            if(conn!=null) conn.Dispose();
+
+
+            return collectionUrls;
+        }
+
+        public static List<string> GetSetsList()
+        {
+            List<string> allSets = new List<string>{};
+
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = @"SELECT setName FROM cards GROUP BY setName;";
+
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while(rdr.Read())
+            {
+                string set = rdr.GetString(0);
+                allSets.Add(set);
+            }
+
+            conn.Close();
+            if(conn!=null) conn.Dispose();
+
+            return allSets;
+        }
+
+
+        public static List<string> GetSetImages(string setName)
+        {
+            List<string> allCardImagesInSet = new List<string>{};
+            List<int> allIds = new List<int>{};
+
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = @"SELECT image_url, id FROM cards WHERE setName = @setNameSearch ORDER BY name;";
+
+            MySqlParameter setNameSearch = new MySqlParameter("@setNameSearch", setName);
+            cmd.Parameters.Add(setNameSearch);
+
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while(rdr.Read())
+            {
+                if(!rdr.IsDBNull(0))
+                {
+                    string image_url = rdr.GetString(0);
+                    int id = rdr.GetInt32(1);
+                    allCardImagesInSet.Add(image_url);
+                    allIds.Add(id);
+                }
+            }
+
+            conn.Close();
+            if(conn!=null) conn.Dispose();
+
+            return allCardImagesInSet;
+        }
     }
 }
