@@ -101,7 +101,27 @@ video {
   margin-bottom: 20%;
 }
 
-.navbar2 {
+.btn {
+background-color: black;
+height: 30px;
+color: #777;
+font-size: 15px;
+margin-top: 5px;
+}
 
+#searchbar {
+  margin-top: 12px;
+  background-color: #c4c4c4;
+  color: black;
+  padding-left: 10px;
+
+}
+
+#columnlay {
+background-color: #c4c4c4;
+
+margin-top: 8px;
+margin-right: 22px;
+width: 120px;
 
 }
