@@ -1,13 +1,15 @@
+<div>
+    <form action="/cards/collection/add" method="post" id="collectionForm">
+        <img class="droppable" src="~/img/deck.png">
+        <input hidden id="collectionValue" name="url" value="">
+    </form>
+</div>
 @{ Layout = "_Layout"; }
 @using MtgApiManager.Lib.Service;
 @using MtgApiManager.Lib.Core;
 @using MtgApiManager.Lib.Model;
 
 <div class="grid-container">
-
-    <div>
-        <h1>Magic Collection</h1>
-    </div>
     <div>
         @if(@ViewBag.Results["images"].Count == 0)
         {
@@ -23,12 +25,6 @@
 
             }
         }
-    </div>
-    <div>
-        <form action="/cards/collection/add" method="post" id="collectionForm">
-            <img class="droppable" src="~/img/deck.png">
-            <input hidden id="collectionValue" name="url" value="">
-        </form>
     </div>
     @if(@ViewBag.Results["totalPages"] > 1)
     {
