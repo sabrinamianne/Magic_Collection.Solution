@@ -3,6 +3,12 @@
 @using MtgApiManager.Lib.Core;
 @using MtgApiManager.Lib.Model;
 
+    <div class="collection-icon">
+        <form action="/cards/collection/add" method="post" id="collectionForm">
+            <img class="droppable" src="~/img/deck.png">
+            <input hidden id="collectionValue" name="url" value="">
+        </form>
+    </div>
 <div class="grid-container">
 
     <div>
@@ -23,13 +29,6 @@
                 
             }
         }
-    </div>
-    <div>
-
-        <form action="/cards/collection/add" method="post" id="collectionForm">
-            <img class="droppable" src="~/img/deck.png">
-            <input hidden id="collectionValue" name="url" value="">
-        </form>
     </div>
     @if(@ViewBag.Results["totalPages"] > 1)
     {

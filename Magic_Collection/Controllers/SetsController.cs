@@ -23,6 +23,8 @@ namespace Magic_Collection.Controllers
         public ActionResult Show(string setName)
         {
             List<string> allCardImagesInSet = DB.GetSetImages(setName);
+
+            ViewBag.SetName = setName;
             return View(allCardImagesInSet);
         }
     }
