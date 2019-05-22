@@ -15,9 +15,14 @@ $().ready(function() {
 
 
     $("#pageInput").change(function(){
-        $("#pageForm").attr("action", "/cards/search/"+$("#pageInput").val())
+        $("#pageForm").attr("action", "/cards/search/"+$("#pageInput").val());
         $("#pageForm").submit();
     });
 
+
+    $("#allPageInput").change(function(){
+        $("#allPageForm").attr("action", "/cards/"+$("#allPageInput").val());
+        $("#allPageForm").submit();
+    });    
     
 });
