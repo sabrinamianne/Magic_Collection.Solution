@@ -104,6 +104,18 @@ namespace Magic_Collection.Models
             cmd.ExecuteNonQuery();
         }
 
+        public static void DeleteFromCollection(string url)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"DELETE FROM collection WHERE image_url = @cardUrl LIMIT 1;";
+            MySqlParameter cardUrl = new MySqlParameter("@cardUrl", url);
+            cmd.Parameters.Add(cardUrl);
+
+            cmd.ExecuteNonQuery();
+        }
 
         public static List<string> GetAllCollectionCards()
         {
