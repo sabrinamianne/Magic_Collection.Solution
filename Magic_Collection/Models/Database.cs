@@ -13,21 +13,29 @@ namespace Magic_Collection.Models
             return conn;
         }
 
-        public static List<string> Search(string search, string column)
+        public static Dictionary<string, object>AllCards(int page = 1, int limit = 50)
         {
             List<string> images = new List<string>{};
 
             MySqlConnection conn = DB.Connection();
             conn.Open();
-
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = @"SELECT image_url FROM cards WHERE "+column+" LIKE '%"+search+"%' ORDER BY name ASC;";
 
-            MySqlParameter searchName = new MySqlParameter("@searchName", search);
-            cmd.Parameters.Add(searchName);
 
+            //Dont need this every search?
+            cmd.CommandText = @"SELECT COUNT(*) FROM cards;";
+            int totalResults = int.Parse(cmd.ExecuteScalar().ToString());
+            int totalPages = totalResults / limit;
+
+            int start = (page-1) * limit;
+            int end = start + limit;
+                        
+            //DEBUG
+            // Console.WriteLine("totalResults: " + totalResults);
+            // Console.WriteLine("totalPages: " + totalPages);
+
+            cmd.CommandText = @"SELECT image_url FROM cards;";
             MySqlDataReader rdr = cmd.ExecuteReader();
-
             while(rdr.Read())
             {
                 if(!rdr.IsDBNull(0))
@@ -40,9 +48,58 @@ namespace Magic_Collection.Models
             conn.Close();
             if(conn!=null) conn.Dispose();
 
-            return images;
+            Dictionary<string, object> results = new Dictionary<string, object>{
+                {"images", images},
+                {"totalFound", totalResults},
+                {"totalPages", totalPages},
+            };
+
+
+            return results;
         }
 
+        public static Dictionary<string, object>Search(string search, string column, int page = 1, int limit = 50)
+        {
+            List<string> images = new List<string>{};
 
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand();
+
+
+            //Dont need this every search?
+            cmd.CommandText = @"SELECT COUNT(*) FROM cards WHERE "+column+" LIKE '%"+search+"%';";
+            int totalResults = int.Parse(cmd.ExecuteScalar().ToString());
+            int totalPages = totalResults / limit;
+
+            int start = (page-1) * limit;
+            int end = start + limit;
+                        
+            //DEBUG
+            // Console.WriteLine("totalResults: " + totalResults);
+            // Console.WriteLine("totalPages: " + totalPages);
+
+            cmd.CommandText = @"SELECT image_url FROM cards WHERE "+column+" LIKE '%"+search+"%' ORDER BY name ASC LIMIT "+start+", "+limit+";";
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while(rdr.Read())
+            {
+                if(!rdr.IsDBNull(0))
+                {
+                    string imageUrl = rdr.GetString(0);
+                    images.Add(imageUrl);
+                }
+            }
+
+            conn.Close();
+            if(conn!=null) conn.Dispose();
+
+            Dictionary<string, object> results = new Dictionary<string, object>{
+                {"images", images},
+                {"totalFound", totalResults},
+                {"totalPages", totalPages},
+            };
+
+            return results;
+        }
     }
 }

@@ -16,52 +16,54 @@ namespace Magic_Collection.Controllers
         [HttpGet("/cards")]
         public ActionResult Index()
         {
-            List<string> allCards = new List<string>{};
+            // List<string> allCards = new List<string>{};
 
-            MySqlConnection conn = DB.Connection();
-            conn.Open();
+            // MySqlConnection conn = DB.Connection();
+            // conn.Open();
 
-            MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = @"SELECT image_url FROM cards ORDER BY name ASC;";
+            // MySqlCommand cmd = conn.CreateCommand();
+            // cmd.CommandText = @"SELECT image_url FROM cards ORDER BY name ASC;";
 
-            MySqlDataReader rdr = cmd.ExecuteReader();
-            while(rdr.Read())
-            {
-                if(!rdr.IsDBNull(0))
-                {
-                    string imageUrl = rdr.GetString(0);
-                    allCards.Add(imageUrl);
-                }
-            }
+            // MySqlDataReader rdr = cmd.ExecuteReader();
+            // while(rdr.Read())
+            // {
+            //     if(!rdr.IsDBNull(0))
+            //     {
+            //         string imageUrl = rdr.GetString(0);
+            //         allCards.Add(imageUrl);
+            //     }
+            // }
 
-            conn.Close();
-            if(conn!=null) conn.Dispose();
+            // conn.Close();
+            // if(conn!=null) conn.Dispose();
 
-            return View(allCards);
+            ViewBag.Results = DB.AllCards();
+            ViewBag.Search = " ";
+            ViewBag.Column = "*";
+
+            return View();
 
         }
 
         [HttpPost("/cards/search")]
-        public ActionResult Show(string search, string column)
+        public ActionResult Show(string search, string column, int limit = 50)
         {
-            List<string> images = DB.Search(search, column);
-
-            return View(images);
-        }
-
-
-        [HttpGet("/cards/search")]
-        public ActionResult Show(string test)
-        {
+            ViewBag.Results = DB.Search(search, column, 1, limit);
+            ViewBag.Search = search;
+            ViewBag.Column = column;
             return View();
         }
 
-        [HttpGet]
-        public ActionResult Ajax()
+
+        [HttpPost("/cards/search/{page}")]
+        public ActionResult Show(string search, string column, int page = 1, int limit = 50)
         {
-            Console.WriteLine("made it to the controller!");
-            return RedirectToAction("Index");
+
+            ViewBag.Results = DB.Search(search, column, page, limit);
+            ViewBag.Search = search;
+            ViewBag.Column = column;
+            ViewBag.Page = page;
+            return View();
         }
-       
     }   
 }

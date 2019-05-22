@@ -9,23 +9,47 @@
         <h1>Magic Collection</h1>
     </div>
     <div>
-        @if(@Model.Count == 0)
+        @if(@ViewBag.Results["images"].Count == 0)
         {
             <h2>Sorry, I have nothing to show you</h2>
         }
     </div>
     <div>
-        @if(@Model.Count > 0)
+        @if(@ViewBag.Results["images"].Count > 0)
         {
-            @foreach(string img in @Model)
+            @foreach(string img in @ViewBag.Results["images"])
             {
-        
-                <img class="draggable card" src="@img"/>
-              
+                <img class="draggable card" src="@img"/> 
             }
         }
     </div>
     <div>
         <img class="droppable" src="~/img/deck.png">
     </div>
+    @if(@ViewBag.Results["totalPages"] > 1)
+    {
+        <div>
+            <form action="/cards/search/1" method="post" id="pageForm">
+                <label for="page">Select Page</label><br>
+                <select name="page" id="pageInput" aria-placeholder="@ViewBag.Page">
+
+                    @for(int i = 1; i < @ViewBag.Results["totalPages"]; i++)
+                    {
+                        @if(@i == @ViewBag.Page)
+                        {
+                            <option selected value="@i">@i</option>
+                        }
+                        else
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    }
+                </select>
+            
+                <input hidden name="search" value='@ViewBag.Search'>
+                <input hidden name="column" value='@ViewBag.Column'>
+                <button type="submit">Go</button>
+            </form>
+        </div>
+    }
 </div>
