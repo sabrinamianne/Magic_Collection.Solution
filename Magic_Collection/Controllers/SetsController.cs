@@ -15,59 +15,62 @@ namespace Magic_Collection.Controllers
         [HttpGet("/sets")]
         public ActionResult Index()
         {
-            List<string> allSets = new List<string>{};
 
-            MySqlConnection conn = DB.Connection();
-            conn.Open();
+            // MySqlConnection conn = DB.Connection();
+            // conn.Open();
 
-            MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = @"SELECT setName FROM cards GROUP BY setName;";
+            // MySqlCommand cmd = conn.CreateCommand();
+            // cmd.CommandText = @"SELECT setName FROM cards GROUP BY setName;";
 
-            MySqlDataReader rdr = cmd.ExecuteReader();
-            while(rdr.Read())
-            {
-                string set = rdr.GetString(0);
-                allSets.Add(set);
-            }
+            // MySqlDataReader rdr = cmd.ExecuteReader();
+            // while(rdr.Read())
+            // {
+            //     string set = rdr.GetString(0);
+            //     allSets.Add(set);
+            // }
 
-            conn.Close();
-            if(conn!=null) conn.Dispose();
+            // conn.Close();
+            // if(conn!=null) conn.Dispose();
 
+            List<string> allSets = DB.GetSetsList();
             return View(allSets);
         }
         
         [HttpGet("/sets/{setName}")]
         public ActionResult Show(string setName)
         {
-            List<string> allCardImagesInSet = new List<string>{};
-            List<int> allIds = new List<int>{};
 
-            MySqlConnection conn = DB.Connection();
-            conn.Open();
 
-            MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = @"SELECT image_url, id FROM cards WHERE setName = @setNameSearch ORDER BY name;";
 
-            MySqlParameter setNameSearch = new MySqlParameter("@setNameSearch", setName);
-            cmd.Parameters.Add(setNameSearch);
+            // List<string> allCardImagesInSet = new List<string>{};
+            // List<int> allIds = new List<int>{};
 
-            MySqlDataReader rdr = cmd.ExecuteReader();
-            while(rdr.Read())
-            {
-                if(!rdr.IsDBNull(0))
-                {
-                    string image_url = rdr.GetString(0);
-                    int id = rdr.GetInt32(1);
-                    allCardImagesInSet.Add(image_url);
-                    allIds.Add(id);
-                }
-            }
+            // MySqlConnection conn = DB.Connection();
+            // conn.Open();
 
-            conn.Close();
-            if(conn!=null) conn.Dispose();
+            // MySqlCommand cmd = conn.CreateCommand();
+            // cmd.CommandText = @"SELECT image_url, id FROM cards WHERE setName = @setNameSearch ORDER BY name;";
 
-            ViewBag.AllIds = allIds;
-            
+            // MySqlParameter setNameSearch = new MySqlParameter("@setNameSearch", setName);
+            // cmd.Parameters.Add(setNameSearch);
+
+            // MySqlDataReader rdr = cmd.ExecuteReader();
+            // while(rdr.Read())
+            // {
+            //     if(!rdr.IsDBNull(0))
+            //     {
+            //         string image_url = rdr.GetString(0);
+            //         int id = rdr.GetInt32(1);
+            //         allCardImagesInSet.Add(image_url);
+            //         allIds.Add(id);
+            //     }
+            // }
+
+            // conn.Close();
+            // if(conn!=null) conn.Dispose();
+
+            List<string> allCardImagesInSet = DB.GetSetImages(setName);
+
             return View(allCardImagesInSet);
         }
     }
