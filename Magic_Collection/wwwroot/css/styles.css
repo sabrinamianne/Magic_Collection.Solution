@@ -1,5 +1,5 @@
 body {
-    background-color : rgb(70, 70, 70);
+    background-color : black;
     color: #e8912e;
     font-family: fantasy;
 }
@@ -11,12 +11,17 @@ video {
     left: 1px;
 }
 
-.jumbotron {
-  background-color: rgb(70, 70, 70);
+#jumbo{
+  background-color: black;
   background-size: cover;
   height: 1px;
 }
 
+#jumboCards{
+  background-image: url("../img/team.jpeg");
+  background-size: cover;
+  padding-bottom: 150px;
+}
 
 #links {
   padding-top: 80px;
@@ -123,5 +128,12 @@ background-color: #c4c4c4;
 margin-top: 8px;
 margin-right: 22px;
 width: 120px;
+}
+
+#title2 {
+  width: 40%;
+  padding-top: 5%;
+  margin-left: 100px;
+
 
 }

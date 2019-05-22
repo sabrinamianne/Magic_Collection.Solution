@@ -19,13 +19,12 @@
         {
             @foreach(string img in @ViewBag.Results["images"])
             {
-                <img class="draggable card" src="@img"/> 
-                
+                <img class="draggable card" src="@img"/>
+
             }
         }
     </div>
     <div>
-
         <form action="/cards/collection/add" method="post" id="collectionForm">
             <img class="droppable" src="~/img/deck.png">
             <input hidden id="collectionValue" name="url" value="">
@@ -50,7 +49,7 @@
                         }
                     }
                 </select>
-            
+
                 <input hidden name="search" value='@ViewBag.Search'>
                 <input hidden name="column" value='@ViewBag.Column'>
             </form>
