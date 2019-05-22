@@ -57,5 +57,19 @@ namespace Magic_Collection.Controllers
             ViewBag.Page = page;
             return View();
         }
+
+        [HttpPost("/cards/collection/add")]
+        public ActionResult Update(string url, int page, int limit)
+        {
+            DB.AddToCollection(url);
+            return RedirectToAction("Collection");
+        }
+
+        [HttpGet("/cards/collection")]
+        public ActionResult Collection()
+        {
+            ViewBag.Collection = DB.GetAllCollectionCards();
+            return View();
+        }
     }   
 }
