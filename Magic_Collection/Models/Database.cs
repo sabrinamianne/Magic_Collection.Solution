@@ -21,20 +21,13 @@ namespace Magic_Collection.Models
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand();
 
-
-            //Dont need this every search?
             cmd.CommandText = @"SELECT COUNT(*) FROM cards;";
             int totalResults = int.Parse(cmd.ExecuteScalar().ToString());
             int totalPages = totalResults / limit;
 
             int start = (page-1) * limit;
-            int end = start + limit;
                         
-            //DEBUG
-            // Console.WriteLine("totalResults: " + totalResults);
-            // Console.WriteLine("totalPages: " + totalPages);
-
-            cmd.CommandText = @"SELECT image_url FROM cards;";
+            cmd.CommandText = @"SELECT image_url FROM cards ORDER BY name ASC LIMIT "+start+", "+limit+";";
             MySqlDataReader rdr = cmd.ExecuteReader();
             while(rdr.Read())
             {
@@ -50,7 +43,7 @@ namespace Magic_Collection.Models
 
             Dictionary<string, object> results = new Dictionary<string, object>{
                 {"images", images},
-                {"totalFound", totalResults},
+                //{"totalFound", totalResults},
                 {"totalPages", totalPages},
             };
 
@@ -73,12 +66,7 @@ namespace Magic_Collection.Models
             int totalPages = totalResults / limit;
 
             int start = (page-1) * limit;
-            int end = start + limit;
-                        
-            //DEBUG
-            // Console.WriteLine("totalResults: " + totalResults);
-            // Console.WriteLine("totalPages: " + totalPages);
-
+        
             cmd.CommandText = @"SELECT image_url FROM cards WHERE "+column+" LIKE '%"+search+"%' ORDER BY name ASC LIMIT "+start+", "+limit+";";
             MySqlDataReader rdr = cmd.ExecuteReader();
             while(rdr.Read())
@@ -95,7 +83,7 @@ namespace Magic_Collection.Models
 
             Dictionary<string, object> results = new Dictionary<string, object>{
                 {"images", images},
-                {"totalFound", totalResults},
+                // {"totalFound", totalResults},
                 {"totalPages", totalPages},
             };
 

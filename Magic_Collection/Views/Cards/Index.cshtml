@@ -13,12 +13,33 @@
 
     </div>
     <div>
-        @foreach(string img in @Model)
+        @foreach(string img in @ViewBag.Images)
         {
             <img class="draggable card" src="@img"/>
         }
     </div>
     <div>
+        @if(@ViewBag.TotalPages > 1)
+        {
+            <div>
+                <form action="/cards/1" method="post" id="allPageForm">
+                    <label for="page">Select Page</label><br>
+                    <select name="page" id="allPageInput" aria-placeholder="@ViewBag.Page">
 
+                        @for(int i = 1; i < @ViewBag.TotalPages; i++)
+                        {
+                            @if(@i == @ViewBag.Page)
+                            {
+                                <option selected value="@i">@i</option>
+                            }
+                            else
+                            {
+                                <option value="@i">@i</option>
+                            }
+                        }
+                    </select>
+                </form>
+            </div>
+        }
     </div>
 </div>
