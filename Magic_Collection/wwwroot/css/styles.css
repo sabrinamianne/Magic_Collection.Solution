@@ -1,5 +1,5 @@
 body {
-    background-color : black;
+    background-color : rgb(70, 70, 70);
     color: #e8912e;
     font-family: fantasy;
 }
@@ -13,7 +13,7 @@ video {
 }
 
 .jumbotron {
-  background-color: black;
+  background-color: rgb(70, 70, 70);
   background-size: cover;
   height: 1px;
 }

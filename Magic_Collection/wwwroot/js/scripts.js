@@ -4,6 +4,7 @@ $().ready(function() {
     $(".draggable").draggable({
         start: function(){
             $(" #collectionValue").attr("value", $(this).attr("src"));
+            $("#collectionDeleteValue").attr("value", $(this).attr("src"));
         },
         revert: true
     });
@@ -14,6 +15,14 @@ $().ready(function() {
         drop: function(){
             console.log("dropped on target");
             $("#collectionForm").submit();           
+        }
+    });
+
+    $(".delete").droppable({
+        classes: {"ui-droppable-hover" : "drop-hover"}, tolerance: "touch",
+        drop: function(){
+            console.log("dropped on target: deleting from collection");
+            $("#collectionDeleteForm").submit();
         }
     });
 

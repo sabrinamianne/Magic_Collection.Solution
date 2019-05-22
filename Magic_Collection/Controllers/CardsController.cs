@@ -59,9 +59,16 @@ namespace Magic_Collection.Controllers
         }
 
         [HttpPost("/cards/collection/add")]
-        public ActionResult Update(string url, int page, int limit)
+        public ActionResult Create(string url)
         {
             DB.AddToCollection(url);
+            return RedirectToAction("Collection");
+        }
+
+        [HttpPost("/cards/collection/delete")]
+        public ActionResult Delete(string url)
+        {
+            DB.DeleteFromCollection(url);
             return RedirectToAction("Collection");
         }
 
