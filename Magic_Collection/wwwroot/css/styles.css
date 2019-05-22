@@ -45,7 +45,7 @@ video {
     text-transform: capitalize;
     height: calc(3rem + 2px) !important;
     border-radius:0;
-    color: violet;
+    color: black;
 }
 @media (min-width: 992px){
     .search-sec{
@@ -72,7 +72,6 @@ video {
 
 #search {
   background-color: #d0d3d8;
-  
   width: 80px;
   display: inline;
   position: absolute;
@@ -91,8 +90,8 @@ video {
 }
 
 #title {
-  padding-top: 22%;
-  width: 87%;
+  padding-top: 60%;
+  width: 90%;
   padding-left: 10%;
   position: relative;
   z-index: 1;
@@ -103,8 +102,6 @@ video {
 }
 
 .navbar2 {
-  box-sizing:border-box;
-  display: block;
-  font-size: 14px;
+
 
 }
