@@ -39,8 +39,34 @@
         </div>
       </div>
     </nav>
-
+    <div class="container">
+      <div class="jumbotron" id="jumboCards">
+        <img src="~/img/title.png" id="title2" alt="title">
+      </div>
+    </div>
+</header>
 <body>
     @RenderBody()
 </body>
+<footer>
+  <nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+      <div class="navbar-footer">
+        <a class="navbar-brand" href="/cards/1">All Cards</a>
+      </div>
+      <div class="navbar-footer">
+        <a class="navbar-brand" href="/sets">All Sets</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> Contact</a></li>
+      </ul>
+      </div>
+    </nav>
+</footer>
 </html>

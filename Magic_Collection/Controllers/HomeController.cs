@@ -16,7 +16,6 @@ namespace Magic_Collection.Controllers
         [HttpGet("/")]
         public ActionResult Index()
         {
-          ViewBag.Results = DB.AllCards(page);
           return View();
         }
     }

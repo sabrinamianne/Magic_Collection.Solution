@@ -37,8 +37,18 @@ a:hover {
     color: rgb(255, 145, 0);
 }
 
+div.collection-icon {
+
+    position: fixed;
+    transform: translate(30px, 300px); 
+}
+
+h4 {
+    text-align: center;
+}
+
 .grid-container {
-    margin : 100px;
+    margin : 200px;
 }
 
 .draggable:hover {
@@ -50,3 +60,4 @@ a:hover {
     transition: transform .1s;
 
 }
+

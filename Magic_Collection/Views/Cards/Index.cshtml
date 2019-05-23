@@ -3,18 +3,16 @@
 @using MtgApiManager.Lib.Core;
 @using MtgApiManager.Lib.Model;
 
-
-<div class="container">
-  <div class="jumbotron" id="jumboCards">
-    <img src="~/img/title.png" id="title2" alt="title">
-  </div>
-</div>
-</header>
-
 <div class="grid-container">
     <div>
-
+    <div class="collection-icon">
+        <form action="/cards/collection/add" method="post" id="collectionForm">
+            <img class="droppable" src="~/img/deck.png">
+            <input hidden id="collectionValue" name="url" value="">
+        </form>
     </div>
+<div class="grid-container">
+    <h1>All cards</h1>
     <div>
         @foreach(string img in @ViewBag.Images)
         {

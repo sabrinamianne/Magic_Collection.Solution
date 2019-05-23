@@ -3,6 +3,12 @@
 @using MtgApiManager.Lib.Core;
 @using MtgApiManager.Lib.Model;
 
+<div class="collection-icon">
+    <form action="/cards/collection/delete" method="post" id="collectionDeleteForm">
+        <img class="delete droppable" src="~/img/trash.png">
+        <input hidden id="collectionDeleteValue" name="url" value="">
+    </form>
+</div>
 <div class="grid-container">
 
 
@@ -24,12 +30,6 @@
                 
             }
         }
-    </div>
-    <div>
-        <form action="/cards/collection/delete" method="post" id="collectionDeleteForm">
-            <img class="delete droppable" src="~/img/trash.png">
-            <input hidden id="collectionDeleteValue" name="url" value="">
-        </form>
     </div>
 
 </div>
