@@ -43,6 +43,10 @@ div.collection-icon {
     transform: translate(30px, 300px); 
 }
 
+h4 {
+    text-align: center;
+}
+
 .grid-container {
     margin : 200px;
 }
